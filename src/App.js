@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
-import Agregar from './components/agregar';
+import Nav from 'react-bootstrap/Nav';
+import Agregar from './pages/agregar/agregar';
 import Budget from './components/budget';
-import Ahorros from './components/ahorros';
+import Ahorros from './pages/ahorros/ahorros';
 import Grafico from './components/grafico';
-import Historial from './components/Historial';
+import Historial from './pages/historial/Historial';
 
 function App() {
   const [transactions, setTransactions] = useState([]);
-  const [ahorroPorcentaje, setAhorroPorcentaje] = useState(10);
   const [message, setMessage] = useState("");
 
   useEffect(() => {
@@ -26,15 +26,20 @@ function App() {
   }, [transactions]);
 
   const handleAddTransaction = (transaction) => {
+    
     if (!transaction.amount || isNaN(transaction.amount) || transaction.amount <= 0) {
       setMessage("Por favor, ingresa un monto válido.");
+      setTimeout(() => setMessage(""), 5000);
+     
       return;
     }
     
     setTransactions([...transactions, transaction]);
     setMessage("Transacción agregada correctamente!");
+    setTimeout(() => setMessage(""), 3000);
+    
   };
-
+ 
   const totalIncome = transactions
     .filter((t) => t.type === 'income')
     .reduce((acc, curr) => acc + curr.amount, 0);
@@ -43,7 +48,8 @@ function App() {
     .filter((t) => t.type === 'expense')
     .reduce((acc, curr) => acc + curr.amount, 0);
 
-  const totalAhorros = (totalIncome * ahorroPorcentaje) / 100;
+  
+  
 
   return (
     <Router>
@@ -51,23 +57,30 @@ function App() {
         <h1 className="text-center my-4">Thrift It</h1>
         
         {/* Barra de navegación */}
-        <nav className="navbar navbar-expand-lg navbar-light bg-light mb-4">
-          <ul className="navbar-nav">
-            <li className="nav-item">
-              <Link className="nav-link" to="/">Inicio </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/agregar">Nuevo Movimiento </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/historial">Historial </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/ahorros">Ahorros </Link>
-            </li>
-          </ul>
-        </nav>
-        
+        <Nav justify variant="tabs" defaultActiveKey="/home">
+      <Nav.Item>
+      <Nav.Item>
+        <Nav.Link>
+        <Link to="/"> Inicio  </Link> 
+        </Nav.Link>
+      </Nav.Item>
+      </Nav.Item>
+      <Nav.Item>
+        <Nav.Link>
+        <Link to="/agregar"> Nuevo movimiento  </Link> 
+        </Nav.Link>
+      </Nav.Item>
+      <Nav.Item>
+        <Nav.Link>
+        <Link to="/historial"> Tus movimientos  </Link> 
+        </Nav.Link>
+      </Nav.Item>
+      <Nav.Item>
+        <Nav.Link>
+        <Link to="/ahorros"> Ahorros  </Link> 
+        </Nav.Link>
+      </Nav.Item>
+    </Nav>
         {/* Mensaje de confirmación/error */}
         {message && <div className="alert alert-info">{message}</div>}
 
@@ -76,7 +89,7 @@ function App() {
           <Route path="/" element={<Home transactions={transactions} totalIncome={totalIncome} totalExpenses={totalExpenses} />} />
           <Route path="/agregar" element={<Agregar onAdd={handleAddTransaction} />} />
           <Route path="/historial" element={<Historial transactions={transactions} />} />
-          <Route path="/ahorros" element={<Ahorros totalIncome={totalIncome} totalAhorros={totalAhorros} />} />
+          <Route path="/ahorros" element={<Ahorros totalIncome={totalIncome} />} />
         </Routes>
       </div>
     </Router>
