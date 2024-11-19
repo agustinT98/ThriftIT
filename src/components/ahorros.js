@@ -1,27 +1,14 @@
-import React, { useState } from 'react';
+// Ahorros.js
+import React from 'react';
 
-const Ahorros = ({totalIncome}) => {
-    const [porcentajeAhorros, setPorcentajeAhorros] = useState(0);
-
-    const handlePercentageChange = (e) => {
-        setPorcentajeAhorros(parseFloat(e.target.value) || 0);
-      };
-
-    const MontoAhorros = totalIncome * porcentajeAhorros / 100;
-
-    return (
-        <div>
-        <h2>Cálculo de Ahorros</h2>
-        <label>
-          Porcentaje de ahorro: 
-          <input
-            type="number"
-            value={porcentajeAhorros}
-            onChange={handlePercentageChange}
-          />%
-        </label>
-        <p>Monto a ahorrar: ${MontoAhorros.toFixed(2)}</p>
-      </div>
-    );    
+const Ahorros = ({ totalIncome, totalAhorros }) => {
+  return (
+    <div>
+      <h2>Ahorros</h2>
+      <p>Total de Ingresos: ${totalIncome}</p>
+      <p>Ahorros estimados: ${totalAhorros}</p>
+    </div>
+  );
 };
+
 export default Ahorros;

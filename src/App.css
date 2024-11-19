@@ -1,35 +1,176 @@
-body {
-  font-family: Arial, sans-serif;
-  margin: 20px;
-  background-color: #f4f4f9;
+/* App.css */
+/* Estilos para pantallas pequeñas */
+@media (max-width: 600px) {
+  .app-container {
+    width: 95%;
+  }
+
+  h1 {
+    font-size: 1.5em;
+  }
+
+  input[type="number"] {
+    width: 80%;
+  }
+  
+  button {
+    width: 100%;
+    padding: 12px 0;
+  }
 }
 
-h1, h2 {
-  color: #333;
-}
-
-form {
+/* Mensajes de confirmación y error */
+.message {
+  padding: 10px;
   margin-bottom: 20px;
+  border-radius: 5px;
+  text-align: center;
 }
 
-input, select {
-  margin-left: 10px;
-  padding: 5px;
+.message.error {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
 }
 
+.message.success {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+/* Animaciones para los botones */
 button {
-  margin-left: 10px;
-  padding: 5px 10px;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 button:hover {
-  background-color: #0056b3;
+  background-color: #45a049;
+  transform: scale(1.05);
 }
 
-p {
-  margin: 5px 0;
+/* Animación para las transacciones agregadas */
+ul li {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Estilo general */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ 
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+}
+
+h2 {
+  color: #333;
+  margin-top: 20px;
+}
+/* Estilos para la navegación */
+nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+nav ul li {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #007bff;
+}
+
+nav ul li a:hover {
+  text-decoration: underline;
+}
+
+.message {
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.message.error {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+.message.success {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+/* Contenedor principal */
+div {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  width: 80%;
+  max-width: 600px;
+}
+
+/* Sección de los formularios */
+input[type="number"] {
+  padding: 8px;
+  margin-top: 10px;
+  width: 60%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+label {
+  margin-left: 10px;
+  font-size: 14px;
+  color: #555;
+}
+
+/* Estilos de los botones y listas */
+button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  background-color: #f9f9f9;
+  padding: 10px;
+  margin-bottom: 8px;
+  border-radius: 5px;
 }

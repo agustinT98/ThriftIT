@@ -20,7 +20,7 @@ const Grafico = ({transactions}) => {
     
     return (
         <div>
-          <h2>Reporte Financiero</h2>
+          <h2> Gráficos </h2>
           {data.every((d) => d.value >= 0) ? (
             <PieChart width={300} height={300}>
               <Pie
