@@ -1,4 +1,5 @@
-ThriftIT
+<b>ThriftIT</b>
+
 ThriftIT es una aplicación web en desarrollo diseñada para ayudarte a gestionar tus finanzas personales de manera fácil y eficiente. Con ThriftIT, puedes registrar tus ingresos y egresos, organizarlos por categorías, y calcular el porcentaje de tus ingresos que puedes ahorrar para alcanzar tus objetivos financieros.
 
 
