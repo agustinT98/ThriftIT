@@ -91,6 +91,7 @@ function App() {
           <Route path="/historial" element={<Historial transactions={transactions} />} />
           <Route path="/ahorros" element={<Ahorros totalIncome={totalIncome} />} />
         </Routes>
+         
       </div>
     </Router>
   );
